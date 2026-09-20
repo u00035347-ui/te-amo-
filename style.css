@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #010105;
+  font-family: 'Poppins', sans-serif;
+}
+
+#canvas-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#labels-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Etiquetas flotantes con frases bonitas */
+.floating-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px #ffee00, 0 0 20px #ffb703;
+  white-space: nowrap;
+  background: rgba(15, 10, 30, 0.85);
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: 1.5px solid rgba(255, 238, 0, 0.8);
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.floating-label:hover {
+  background: rgba(255, 238, 0, 0.35);
+  border-color: #ffee00;
+  box-shadow: 0 0 35px rgba(255, 238, 0, 0.9);
+}
+
+/* TEXTO "TE AMO" EN EL CENTRO EXACTO DEL CORAZÓN GRANDES */
+.floating-label.heart-center-label {
+  font-size: 2.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #ffffff;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+  z-index: 10;
+  text-shadow: 0 0 15px #ffee00, 0 0 30px #ffaa00, 0 0 60px #ff8c00, 0 0 100px #ff3300, 0 0 140px #ff0000;
+  animation: pulseHeartText 1.6s infinite alternate ease-in-out;
+}
+
+@keyframes pulseHeartText {
+  0% {
+    transform: translate(-50%, -50%) scale(0.88);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Botón de Música */
+#music-btn {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  z-index: 10;
+  background: rgba(255, 238, 0, 0.15);
+  border: 1.5px solid #ffee00;
+  color: #ffee00;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 238, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#music-btn:hover {
+  background: #ffee00;
+  color: #000;
+  box-shadow: 0 0 35px #ffee00;
+  transform: scale(1.06);
+}
+
+/* Modal y Carta de Amor */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background: rgba(1, 1, 8, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.modal-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.letter-card {
+  position: relative;
+  width: 90%;
+  max-width: 520px;
+  background: linear-gradient(135deg, rgba(28, 20, 10, 0.96), rgba(12, 9, 24, 0.98));
+  border: 2px solid rgba(255, 220, 100, 0.8);
+  border-radius: 24px;
+  padding: 42px 36px;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.35), inset 0 0 25px rgba(255, 215, 0, 0.12);
+  color: #ffffff;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.hidden .letter-card {
+  transform: scale(0.65);
+}
+
+.close-btn {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #ffd700;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.2) rotate(90deg);
+}
+
+.letter-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffd700;
+}
+
+.letter-sub {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffca3a;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.letter-heading {
+  font-family: 'Lora', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.letter-divider {
+  border: none;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  margin: 15px 0 22px 0;
+}
+
+.letter-text {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #fffdf0;
+  margin-bottom: 25px;
+}
+
+.letter-footer {
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffca3a;
+}

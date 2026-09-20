@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universo de Ramos de Flores Amarillas 🌻✨</title>
+  
+  <!-- Tipografías de alta legibilidad y elegancia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Librería Three.js y Controles de Cámara -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+  <!-- Escena 3D -->
+  <div id="canvas-container"></div>
+  
+  <!-- Contenedor para Etiquetas 3D -->
+  <div id="labels-container"></div>
+
+  <!-- Botón de Música -->
+  <button id="music-btn" onclick="toggleAudio()">🎵 Activar Música Galáctica 💛</button>
+
+  <!-- Modal para Cartas de los Ramos de Flores Amarillas -->
+  <div id="letter-modal" class="modal-overlay hidden">
+    <div class="letter-card">
+      <button class="close-btn" onclick="closeLetter()">✕</button>
+      <div class="letter-header">
+        <span class="letter-badge">✨ RAMO DE FLORES AMARILLAS ✨</span>
+        <h3 id="letter-subtitle" class="letter-sub">PARA EL AMOR DE MI VIDA</h3>
+      </div>
+      <h2 id="letter-title" class="letter-heading">Título</h2>
+      <hr class="letter-divider">
+      <p id="letter-body" class="letter-text">Mensaje...</p>
+      <div class="letter-footer">
+        <span id="letter-signature" class="letter-sig">Por siempre tuyo en cada estrella ✨</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
